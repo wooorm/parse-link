@@ -33,7 +33,6 @@
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- test/index.js",
     "build-browser": "node_modules/.bin/browserify test/index.js -o test/browserified.js",
     "build-component": "component build -a && cp build/build.js test/component.js && cat test/index.js >> test/component.js",
-    "build": "npm run build-browser && npm run build-component",
-    "prepublish": "npm run build"
+    "build": "npm run build-browser && npm run build-component"
   }
 }
