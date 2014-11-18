@@ -1,0 +1,20 @@
+{
+  "name": "linq",
+  "version": "0.0.1",
+  "description": "Unified URL parsing API in the browser and node",
+  "license": "MIT",
+  "keywords": [
+    "url",
+    "uri",
+    "link",
+    "parse",
+    "parseing"
+  ],
+  "repository": "wooorm/linq",
+  "scripts": [
+    "lib/linq-browser.js"
+  ],
+  "dependencies": {
+    "component/url": "^0.2.0"
+  }
+}

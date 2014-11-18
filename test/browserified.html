@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="browser.js"></script>
+    <script src="browserified.js" onload="window.scriptDidLoad=true;void 0"></script>
+    <script>
+      mocha.run();
+      window.setTimeout(function () {
+        if (!('scriptDidLoad' in window)) {
+          document.getElementById('mocha').innerHTML = '<h1>' +
+            'Woops, an error occured!</h1>' +
+            '<p>' +
+              'It seems like the browserified code cant be loaded.' +
+            '</p>' +
+            '<p>Did you forget to execute</p>' +
+            '<pre><code>$ npm run build-browser</code></pre>';
+        }
+      }, 100);
+    </script>
+  </body>
+</html>

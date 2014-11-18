@@ -1,0 +1,39 @@
+{
+  "name": "linq",
+  "version": "0.0.1",
+  "description": "Unified URL parsing API in the browser and node",
+  "license": "MIT",
+  "keywords": [
+    "url",
+    "uri",
+    "link",
+    "parse",
+    "parseing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/linq.git"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "devDependencies": {
+    "browserify": "^6.0.0",
+    "eslint": "^0.9.0",
+    "istanbul": "^0.3.0",
+    "jscs": "^1.7.0",
+    "mocha": "^2.0.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports test/index.js",
+    "test-travis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks -u exports test/index.js",
+    "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
+    "lint-api": "node_modules/.bin/eslint index.js",
+    "lint-test": "node_modules/.bin/eslint test/index.js --env mocha",
+    "lint-style": "node_modules/.bin/jscs index.js test/index.js --reporter=inline",
+    "make": "npm run lint && npm run coverage",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- test/index.js",
+    "build-browser": "node_modules/.bin/browserify test/index.js -o test/browserified.js",
+    "build-component": "component build -a && cp build/build.js test/component.js && cat test/index.js >> test/component.js",
+    "build": "npm run build-browser && npm run build-component",
+    "prepublish": "npm run build"
+  }
+}

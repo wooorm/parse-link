@@ -1,0 +1,10 @@
+.*
+*.log
+build/
+components/
+coverage/
+node_modules/
+lib/linq-browser.js
+test/
+component.json
+History.md

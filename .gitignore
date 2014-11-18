@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+build/
+components/
+coverage/
+node_modules/
+test/browserified.js
+test/component.js
