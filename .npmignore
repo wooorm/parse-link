@@ -4,7 +4,7 @@ build/
 components/
 coverage/
 node_modules/
-lib/linq-browser.js
+lib/parse-url-browser.js
 test/
 component.json
 History.md

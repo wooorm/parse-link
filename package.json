@@ -1,5 +1,5 @@
 {
-  "name": "linq",
+  "name": "parse-url",
   "version": "0.0.1",
   "description": "Unified URL parsing API in the browser and node",
   "license": "MIT",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wooorm/linq.git"
+    "url": "https://github.com/wooorm/parse-url.git"
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "devDependencies": {

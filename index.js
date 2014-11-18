@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/linq.js');
+module.exports = require('./lib/parse-url.js');

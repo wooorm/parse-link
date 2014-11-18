@@ -1,4 +1,4 @@
-# linq [![Build Status](https://img.shields.io/travis/wooorm/linq.svg?style=flat)](https://travis-ci.org/wooorm/linq) [![Coverage Status](https://img.shields.io/coveralls/wooorm/linq.svg?style=flat)](https://coveralls.io/r/wooorm/linq?branch=master)
+# parse-url [![Build Status](https://img.shields.io/travis/wooorm/parse-url.svg?style=flat)](https://travis-ci.org/wooorm/parse-url) [![Coverage Status](https://img.shields.io/coveralls/wooorm/parse-url.svg?style=flat)](https://coveralls.io/r/wooorm/parse-url?branch=master)
 
 Unified URL parsing API in the browser and node.
 
@@ -6,12 +6,12 @@ Unified URL parsing API in the browser and node.
 
 npm:
 ```sh
-$ npm install linq
+$ npm install parse-url
 ```
 
 Component:
 ```sh
-$ component install wooorm/linq
+$ component install wooorm/parse-url
 ```
 
 Note, if you Browserify the `npm` module, you'll include Node's url module, not the anchor-tag browser functionality.
@@ -19,9 +19,9 @@ Note, if you Browserify the `npm` module, you'll include Node's url module, not 
 ## Usage
 
 ```js
-var linq = require('linq');
+var parseUrl = require('parse-url');
 
-linq('http://user:pass@host.com:8080/path?query=string#hash');
+parseUrl('http://user:pass@host.com:8080/path?query=string#hash');
 ```
 
 Yields:
@@ -44,7 +44,7 @@ Yields:
 
 ## API
 
-### linq(url)
+### parse-url(url)
 
 Parses `url` into a link. Returns an object with the following properties:
 
