@@ -1,6 +1,6 @@
 # linq [![Build Status](https://img.shields.io/travis/wooorm/linq.svg?style=flat)](https://travis-ci.org/wooorm/linq) [![Coverage Status](https://img.shields.io/coveralls/wooorm/linq.svg?style=flat)](https://coveralls.io/r/wooorm/linq?branch=master)
 
-A pretty fast version of the [Porter stemming algorithm](http://tartarus.org/martin/Porterlinq/).
+Unified URL parsing API in the browser and node.
 
 ## Installation
 
