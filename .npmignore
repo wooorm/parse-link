@@ -4,7 +4,7 @@ build/
 components/
 coverage/
 node_modules/
-lib/parse-url-browser.js
+lib/parse-link-browser.js
 test/
 component.json
 History.md

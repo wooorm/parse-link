@@ -4,17 +4,17 @@
  * Dependencies.
  */
 
-var parseUrl,
+var parseLink,
     assert;
 
 try {
-    parseUrl = require('parse-' + 'url');
+    parseLink = require('parse-' + 'link');
 } catch (exception) {
     try {
-        parseUrl = require('..');
+        parseLink = require('..');
     } catch (exception2) {
         throw new Error(
-            'Could not load parse-url'
+            'Could not load parse-link'
         );
     }
 }
@@ -29,9 +29,9 @@ try {
  * Tests.
  */
 
-describe('parse-url()', function () {
+describe('parse-link()', function () {
     it('should be a `function`', function () {
-          assert(typeof parseUrl === 'function');
+          assert(typeof parseLink === 'function');
     });
 
     it('should have a `href` property', function () {
@@ -39,9 +39,9 @@ describe('parse-url()', function () {
             ur2,
             ur3;
 
-        url = parseUrl('http://google.com/foo/bar');
-        ur2 = parseUrl('http://google.com/foo/bar/');
-        ur3 = parseUrl(
+        url = parseLink('http://google.com/foo/bar');
+        ur2 = parseLink('http://google.com/foo/bar/');
+        ur3 = parseLink(
             'http://user:pass@host.com:8080/path?query=string#hash'
         );
 
@@ -58,15 +58,15 @@ describe('parse-url()', function () {
             ur2,
             ur3;
 
-        url = parseUrl('http://google.com/foo/bar');
-        ur2 = parseUrl('/p/a/t/h');
-        ur3 = parseUrl('mailto:test@example.com');
+        url = parseLink('http://google.com/foo/bar');
+        ur2 = parseLink('/p/a/t/h');
+        ur3 = parseLink('mailto:test@example.com');
 
         assert(url.pathname === '/foo/bar');
         assert(ur2.pathname === '/p/a/t/h');
 
         /* istanbul ignore else: browser */
-        if (parseUrl.length === 2) {
+        if (parseLink.length === 2) {
             assert(ur3.pathname === '');
         } else {
             assert(ur3.pathname === 'test@example.com');
@@ -80,11 +80,11 @@ describe('parse-url()', function () {
             ur4,
             ur5;
 
-        url = parseUrl('http://google.com/foo/bar');
-        ur2 = parseUrl('mailto:test+1@gmail.com');
-        ur3 = parseUrl('https://example.com');
-        ur4 = parseUrl('some-app:in-an-url');
-        ur5 = parseUrl('/p/a/t/h');
+        url = parseLink('http://google.com/foo/bar');
+        ur2 = parseLink('mailto:test+1@gmail.com');
+        ur3 = parseLink('https://example.com');
+        ur4 = parseLink('some-app:in-an-url');
+        ur5 = parseLink('/p/a/t/h');
 
         assert(url.protocol === 'http:');
         assert(ur2.protocol === 'mailto:');
@@ -92,7 +92,7 @@ describe('parse-url()', function () {
         assert(ur4.protocol === 'some-app:');
 
         /* istanbul ignore else: browser */
-        if (parseUrl.length === 2) {
+        if (parseLink.length === 2) {
             assert(ur5.protocol === '');
         } else {
             assert(ur5.protocol === 'file:');
@@ -103,11 +103,11 @@ describe('parse-url()', function () {
         var url,
             ur2;
 
-        url = parseUrl('http://google.com:3000/foo/bar');
+        url = parseLink('http://google.com:3000/foo/bar');
 
         assert(url.hostname === 'google.com');
 
-        ur2 = parseUrl('/one/two/four');
+        ur2 = parseLink('/one/two/four');
 
         assert(ur2.hostname === '');
     });
@@ -116,11 +116,11 @@ describe('parse-url()', function () {
         var url,
             ur2;
 
-        url = parseUrl('http://google.com:3000/foo/bar');
+        url = parseLink('http://google.com:3000/foo/bar');
 
         assert(url.host === 'google.com:3000');
 
-        ur2 = parseUrl('google.com/foo/bar');
+        ur2 = parseLink('google.com/foo/bar');
 
         assert(ur2.host === '');
     });
@@ -132,11 +132,11 @@ describe('parse-url()', function () {
             ur4,
             ur5;
 
-        url = parseUrl('http://google.com/foo/bar');
-        ur2 = parseUrl('https://google.com/foo/bar');
-        ur3 = parseUrl('http://google.com:80/foo/bar');
-        ur4 = parseUrl('http://google.com:3000/foo/bar');
-        ur5 = parseUrl('google.com/foo/bar');
+        url = parseLink('http://google.com/foo/bar');
+        ur2 = parseLink('https://google.com/foo/bar');
+        ur3 = parseLink('http://google.com:80/foo/bar');
+        ur4 = parseLink('http://google.com:3000/foo/bar');
+        ur5 = parseLink('google.com/foo/bar');
 
         assert(url.port === 80);
         assert(ur2.port === 443);
@@ -149,11 +149,11 @@ describe('parse-url()', function () {
         var url,
             ur2;
 
-        url = parseUrl('http://google.com:3000/foo/bar?name=tobi');
+        url = parseLink('http://google.com:3000/foo/bar?name=tobi');
 
         assert(url.search === '?name=tobi');
 
-        ur2 = parseUrl('http://google.com:3000/foo/bar');
+        ur2 = parseLink('http://google.com:3000/foo/bar');
 
         assert(ur2.search === '');
     });
@@ -162,11 +162,11 @@ describe('parse-url()', function () {
         var url,
             ur2;
 
-        url = parseUrl('http://google.com:3000/foo/bar?name=tobi');
+        url = parseLink('http://google.com:3000/foo/bar?name=tobi');
 
         assert(url.query === 'name=tobi');
 
-        ur2 = parseUrl('http://google.com:3000/foo/bar');
+        ur2 = parseLink('http://google.com:3000/foo/bar');
 
         assert(ur2.query === '');
     });
@@ -175,11 +175,11 @@ describe('parse-url()', function () {
         var url,
             ur2;
 
-        url = parseUrl('http://google.com:3000/foo/bar#something');
+        url = parseLink('http://google.com:3000/foo/bar#something');
 
         assert(url.hash === '#something');
 
-        ur2 = parseUrl('http://google.com:3000/foo/bar');
+        ur2 = parseLink('http://google.com:3000/foo/bar');
 
         assert(ur2.hash === '');
     });
@@ -189,18 +189,18 @@ describe('parse-url()', function () {
  * Node.js specific `location`-like relative.
  */
 
-if (parseUrl.length === 2) {
-    describe('parse-url(url, relative)', function () {
+if (parseLink.length === 2) {
+    describe('parse-link(url, relative)', function () {
         it('should work with relative paths', function () {
             assert(
-                parseUrl('/one/two/three', 'four').pathname ===
+                parseLink('/one/two/three', 'four').pathname ===
                 '/one/two/four'
             );
         });
 
         it('should work with absolute paths', function () {
             assert(
-                parseUrl('http://example.com/', '/one').href ===
+                parseLink('http://example.com/', '/one').href ===
                 'http://example.com/one'
             );
         });

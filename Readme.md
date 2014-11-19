@@ -1,4 +1,4 @@
-# parse-url [![Build Status](https://img.shields.io/travis/wooorm/parse-url.svg?style=flat)](https://travis-ci.org/wooorm/parse-url) [![Coverage Status](https://img.shields.io/coveralls/wooorm/parse-url.svg?style=flat)](https://coveralls.io/r/wooorm/parse-url?branch=master)
+# parse-link [![Build Status](https://img.shields.io/travis/wooorm/parse-link.svg?style=flat)](https://travis-ci.org/wooorm/parse-link) [![Coverage Status](https://img.shields.io/coveralls/wooorm/parse-link.svg?style=flat)](https://coveralls.io/r/wooorm/parse-link?branch=master)
 
 Unified URL parsing API in the browser and node.
 
@@ -6,12 +6,12 @@ Unified URL parsing API in the browser and node.
 
 npm:
 ```sh
-$ npm install parse-url
+$ npm install parse-link
 ```
 
 Component:
 ```sh
-$ component install wooorm/parse-url
+$ component install wooorm/parse-link
 ```
 
 Note, if you Browserify the `npm` module, you'll include Node's url module, not the anchor-tag browser functionality.
@@ -19,9 +19,9 @@ Note, if you Browserify the `npm` module, you'll include Node's url module, not 
 ## Usage
 
 ```js
-var parseUrl = require('parse-url');
+var parseLink = require('parse-link');
 
-parseUrl('http://user:pass@host.com:8080/path?query=string#hash');
+parseLink('http://user:pass@host.com:8080/path?query=string#hash');
 ```
 
 Yields:
@@ -44,9 +44,9 @@ Yields:
 
 ## API
 
-### parse-url(url)
+### parse-link(url)
 
-Parses `url` into a link. Returns an object with the following properties:
+Parses `url`. Returns an object with the following properties:
 
 - `href` (string) — given (cleaned) url;
 - `pathname` (string) — path;
@@ -58,7 +58,7 @@ Parses `url` into a link. Returns an object with the following properties:
 - `query` (string) — GET parameters;
 - `hash` (string) — Hash with pound/octothorp/what-evs;
 
-> Node supports a second parameter which the given `url` is `relative` too: In the browser, urls are parsed relative to `window.location`, whereas in Node such a thing doesn’t exist.
+> Node supports a second parameter which the given `url` is `relative` to: In the browser, URLs are parsed relative to `window.location`, whereas in Node such a thing doesn’t exist.
 
 ## Under the hood
 

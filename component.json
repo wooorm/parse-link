@@ -1,5 +1,5 @@
 {
-  "name": "parse-url",
+  "name": "parse-link",
   "version": "0.0.2",
   "description": "Unified URL parsing API in the browser and node",
   "license": "MIT",
@@ -10,9 +10,9 @@
     "parse",
     "parseing"
   ],
-  "repository": "wooorm/parse-url",
+  "repository": "wooorm/parse-link",
   "scripts": [
-    "lib/parse-url-browser.js"
+    "lib/parse-link-browser.js"
   ],
   "dependencies": {
     "component/url": "^0.2.0"
