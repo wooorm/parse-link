@@ -1,5 +1,5 @@
 
-n.n.n / 2014-11-19
+0.0.3 / 2014-11-19
 ==================
 
  * Rename project: `parse-url` > `parse-link`
