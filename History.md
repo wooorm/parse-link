@@ -1,4 +1,11 @@
 
+n.n.n / 2014-12-14
+==================
+
+ * Refactor npm script targets in `package.json`
+ * Add link to personal website to copyright in `Readme.md`
+ * Update browserify, eslint
+
 0.0.3 / 2014-11-19
 ==================
 
