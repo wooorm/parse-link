@@ -1,6 +1,6 @@
 # parse-link [![Build Status](https://img.shields.io/travis/wooorm/parse-link.svg?style=flat)](https://travis-ci.org/wooorm/parse-link) [![Coverage Status](https://img.shields.io/coveralls/wooorm/parse-link.svg?style=flat)](https://coveralls.io/r/wooorm/parse-link?branch=master)
 
-Unified URL parsing API in the browser and node.
+Unified URL parsing API in the browser and Node.js.
 
 ## Installation
 
