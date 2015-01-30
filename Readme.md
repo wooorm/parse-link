@@ -10,6 +10,12 @@ Unified URL parsing API in the browser and Node.js.
 $ npm install parse-link
 ```
 
+[Bower](http://bower.io/#install-packages):
+
+```bash
+$ bower install parse-link
+```
+
 [Component.js](https://github.com/componentjs/component):
 
 ```bash
