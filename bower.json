@@ -1,0 +1,35 @@
+{
+  "name": "parse-link",
+  "main": "parse-link.js",
+  "description": "Unified URL parsing API in the browser and node",
+  "license": "MIT",
+  "keywords": [
+    "url",
+    "uri",
+    "link",
+    "parse",
+    "parseing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/parse-link.git"
+  },
+  "authors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "ignore": [
+    ".*",
+    "*.log",
+    "*.md",
+    "build/",
+    "components/",
+    "coverage/",
+    "lib/",
+    "node_modules/",
+    "build.js",
+    "index.js",
+    "test.js",
+    "component.json",
+    "package.json"
+  ]
+}
