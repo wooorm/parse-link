@@ -1,37 +1,22 @@
 'use strict';
 
-/**
+/*
  * Dependencies.
  */
 
 var parseLink,
     assert;
 
-try {
-    parseLink = require('parse-' + 'link');
-} catch (exception) {
-    try {
-        parseLink = require('..');
-    } catch (exception2) {
-        throw new Error(
-            'Could not load parse-link'
-        );
-    }
-}
+parseLink = require('./');
+assert = require('assert');
 
-try {
-    assert = require('assert');
-} catch (exception) {
-    assert = window.assert;
-}
-
-/**
+/*
  * Tests.
  */
 
 describe('parse-link()', function () {
     it('should be a `function`', function () {
-          assert(typeof parseLink === 'function');
+      assert(typeof parseLink === 'function');
     });
 
     it('should have a `href` property', function () {
@@ -185,7 +170,7 @@ describe('parse-link()', function () {
     });
 });
 
-/**
+/*
  * Node.js specific `location`-like relative.
  */
 
