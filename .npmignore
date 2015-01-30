@@ -5,6 +5,6 @@ components/
 coverage/
 node_modules/
 lib/parse-link-browser.js
-test/
+test.js
 component.json
 History.md

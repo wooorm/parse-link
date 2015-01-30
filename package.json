@@ -16,7 +16,6 @@
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "devDependencies": {
-    "browserify": "^8.0.0",
     "eslint": "^0.13.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
@@ -24,18 +23,15 @@
     "mocha": "^2.0.0"
   },
   "scripts": {
-    "test-api": "_mocha --check-leaks test/index.js",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
-    "test-coverage": "istanbul cover _mocha -- test/index.js",
+    "test-api": "_mocha --check-leaks test.js",
+    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test.js",
+    "test-coverage": "istanbul cover _mocha -- test.js",
     "test-travis": "npm run test-coveralls",
     "test": "npm run test-api",
     "lint-api": "eslint index.js lib/",
-    "lint-test": "eslint --env mocha test/index.js",
-    "lint-style": "jscs --reporter inline index.js lib/ test/index.js",
+    "lint-test": "eslint --env mocha test.js",
+    "lint-style": "jscs --reporter inline index.js lib/ test.js",
     "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
-    "make": "npm run lint && npm run test-coverage",
-    "build-browser-test": "browserify test/index.js -o test/browserified.js",
-    "build-component-test": "component build -a && cp build/build.js test/component.js && cat test/index.js >> test/component.js",
-    "build": "npm run build-browser-test && npm run build-component-test"
+    "make": "npm run lint && npm run test-coverage"
   }
 }

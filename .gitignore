@@ -5,5 +5,3 @@ components/
 coverage/
 node_modules/
 build.js
-test/browserified.js
-test/component.js
