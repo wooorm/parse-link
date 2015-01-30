@@ -28,7 +28,16 @@ $ component install wooorm/parse-link
 var parseLink = require('wooorm/parse-link');
 ```
 
-Note, if you Browserify the `npm` module, you'll include Node's url module, not the anchor-tag browser functionality.
+UMD (globals/AMD/CommonJS) ([uncompressed](parse-link.js) and [compressed](parse-link.min.js)):
+
+```html
+<script src="path/to/parse-link.js"></script>
+<script>
+  parseLink('http://example.com').hostname; // "example.com"
+</script>
+```
+
+Note: if you Browserify the `npm` module, you'll include Node's url module, not the anchor-tag browser functionality.
 
 ## Usage
 
