@@ -16,6 +16,12 @@ $ npm install parse-link
 $ component install wooorm/parse-link
 ```
 
+[Duo](http://duojs.org/#getting-started):
+
+```javascript
+var parseLink = require('wooorm/parse-link');
+```
+
 Note, if you Browserify the `npm` module, you'll include Node's url module, not the anchor-tag browser functionality.
 
 ## Usage
