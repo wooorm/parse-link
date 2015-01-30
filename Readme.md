@@ -78,4 +78,4 @@ There are still some slight differences between the two interfaces: mostly in no
 
 ## License
 
-MIT @ [Titus Wormer](http://wooorm.com)
+[MIT](LICENSE) @ [Titus Wormer](http://wooorm.com)
