@@ -36,6 +36,7 @@
     "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
     "bundle": "duo --stdout lib/parse-link-browser.js -s parseLink > parse-link.js",
+    "postbundle": "esmangle parse-link.js > parse-link.min.js",
     "build": "npm run bundle",
     "prepublish": "npm run build"
   }
