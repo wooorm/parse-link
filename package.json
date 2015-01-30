@@ -34,6 +34,9 @@
     "lint-test": "eslint --env mocha test.js",
     "lint-style": "jscs --reporter inline index.js lib/ test.js",
     "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
-    "make": "npm run lint && npm run test-coverage"
+    "make": "npm run lint && npm run test-coverage",
+    "bundle": "duo --stdout lib/parse-link-browser.js -s parseLink > parse-link.js",
+    "build": "npm run bundle",
+    "prepublish": "npm run build"
   }
 }
