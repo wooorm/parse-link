@@ -1,6 +1,7 @@
 .*
 *.log
 build/
+bower_components/
 components/
 coverage/
 node_modules/
@@ -9,5 +10,6 @@ parse-link.js
 parse-link.min.js
 test.js
 lib/parse-link-browser.js
+bower.json
 component.json
 History.md
