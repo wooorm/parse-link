@@ -4,13 +4,15 @@ Unified URL parsing API in the browser and Node.js.
 
 ## Installation
 
-npm:
-```sh
+[npm](https://docs.npmjs.com/cli/install):
+
+```bash
 $ npm install parse-link
 ```
 
-Component:
-```sh
+[Component.js](https://github.com/componentjs/component):
+
+```bash
 $ component install wooorm/parse-link
 ```
 
@@ -18,7 +20,7 @@ Note, if you Browserify the `npm` module, you'll include Node's url module, not 
 
 ## Usage
 
-```js
+```javascript
 var parseLink = require('parse-link');
 
 parseLink('http://user:pass@host.com:8080/path?query=string#hash');
