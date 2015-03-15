@@ -174,6 +174,7 @@ describe('parse-link()', function () {
  * Node.js specific `location`-like relative.
  */
 
+/* istanbul ignore else */
 if (parseLink.length === 2) {
     describe('parse-link(url, relative)', function () {
         it('should work with relative paths', function () {
