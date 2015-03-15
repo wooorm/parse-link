@@ -1,4 +1,12 @@
 
+0.3.0 / 2015-03-15
+==================
+
+* Add node@0.12, iojs, faster docker to `.travis.yml` ([275cbbf](https://github.com/wooorm/parse-link/commit/275cbbf))
+* Update eslint ([b3ffa6a](https://github.com/wooorm/parse-link/commit/b3ffa6a))
+* Add coverage ignore statement to `test.js` ([bb29c1c](https://github.com/wooorm/parse-link/commit/bb29c1c))
+* Rename `lib/parse-link.js` > `lib/parse-link-node.js` ([224d243](https://github.com/wooorm/parse-link/commit/224d243))
+
 0.2.0 / 2015-01-30
 ==================
 
