@@ -1,194 +1,186 @@
 'use strict';
 
-/*
- * Dependencies.
- */
+var test = require('tape');
+var parse = require('./');
 
-var parseLink,
-    assert;
+test('parse(url)', function (t) {
+  t.equal(
+    parse('http://google.com/foo/bar').href,
+    'http://google.com/foo/bar',
+    '`href`: without trailing slash'
+  );
 
-parseLink = require('./');
-assert = require('assert');
+  t.equal(
+    parse('http://google.com/foo/bar/').href,
+    'http://google.com/foo/bar/',
+    '`href`: with trailing slash'
+  );
 
-/*
- * Tests.
- */
+  t.equal(
+    parse('http://user:pass@host.com:8080/path?query=string#hash').href,
+    'http://user:pass@host.com:8080/path?query=string#hash',
+    '`href`: with auth, search, hash'
+  );
 
-describe('parse-link()', function () {
-    it('should be a `function`', function () {
-      assert(typeof parseLink === 'function');
-    });
+  t.equal(
+    parse('http://google.com/foo/bar').pathname,
+    '/foo/bar',
+    '`pathname`: absolute'
+  );
 
-    it('should have a `href` property', function () {
-        var url,
-            ur2,
-            ur3;
+  t.equal(
+    parse('/p/a/t/h').pathname,
+    '/p/a/t/h',
+    '`pathname`: relative'
+  );
 
-        url = parseLink('http://google.com/foo/bar');
-        ur2 = parseLink('http://google.com/foo/bar/');
-        ur3 = parseLink(
-            'http://user:pass@host.com:8080/path?query=string#hash'
-        );
+  t.equal(
+    parse('mailto:test@example.com').pathname,
+    '',
+    '`pathname`: mailto'
+  );
 
-        assert(url.href === 'http://google.com/foo/bar');
-        assert(ur2.href === 'http://google.com/foo/bar/');
-        assert(
-            ur3.href ===
-            'http://user:pass@host.com:8080/path?query=string#hash'
-        );
-    });
+  t.equal(
+    parse('http://google.com/foo/bar').protocol,
+    'http:',
+    '`protocol`: http'
+  );
 
-    it('should have a `pathname` property', function () {
-        var url,
-            ur2,
-            ur3;
+  t.equal(
+    parse('mailto:test+1@gmail.com').protocol,
+    'mailto:',
+    '`protocol`: mailto'
+  );
 
-        url = parseLink('http://google.com/foo/bar');
-        ur2 = parseLink('/p/a/t/h');
-        ur3 = parseLink('mailto:test@example.com');
+  t.equal(
+    parse('https://example.com').protocol,
+    'https:',
+    '`protocol`: https'
+  );
 
-        assert(url.pathname === '/foo/bar');
-        assert(ur2.pathname === '/p/a/t/h');
+  t.equal(
+    parse('some-app:in-an-url').protocol,
+    'some-app:',
+    '`protocol`: app URL'
+  );
 
-        /* istanbul ignore else: browser */
-        if (parseLink.length === 2) {
-            assert(ur3.pathname === '');
-        } else {
-            assert(ur3.pathname === 'test@example.com');
-        }
-    });
+  t.equal(
+    parse('/p/a/t/h').protocol,
+    '',
+    '`protocol`: relative'
+  );
 
-    it('should have a `protocol` property', function () {
-        var url,
-            ur2,
-            ur3,
-            ur4,
-            ur5;
+  t.equal(
+    parse('http://google.com:3000/foo/bar').hostname,
+    'google.com',
+    '`hostname`: relative'
+  );
 
-        url = parseLink('http://google.com/foo/bar');
-        ur2 = parseLink('mailto:test+1@gmail.com');
-        ur3 = parseLink('https://example.com');
-        ur4 = parseLink('some-app:in-an-url');
-        ur5 = parseLink('/p/a/t/h');
+  t.equal(
+    parse('/one/two/four').hostname,
+    '',
+    '`hostname`: relative'
+  );
 
-        assert(url.protocol === 'http:');
-        assert(ur2.protocol === 'mailto:');
-        assert(ur3.protocol === 'https:');
-        assert(ur4.protocol === 'some-app:');
+  t.equal(
+    parse('http://google.com:3000/foo/bar').host,
+    'google.com:3000',
+    '`host`: with protocol'
+  );
 
-        /* istanbul ignore else: browser */
-        if (parseLink.length === 2) {
-            assert(ur5.protocol === '');
-        } else {
-            assert(ur5.protocol === 'file:');
-        }
-    });
+  t.equal(
+    parse('google.com/foo/bar').host,
+    '',
+    '`host`: without protocol'
+  );
 
-    it('should have a `hostname` property', function () {
-        var url,
-            ur2;
+  t.equal(
+    parse('http://google.com/foo/bar').port,
+    80,
+    '`port`: portless, on http'
+  );
 
-        url = parseLink('http://google.com:3000/foo/bar');
+  t.equal(
+    parse('https://google.com/foo/bar').port,
+    443,
+    '`port`: portless, on https'
+  );
 
-        assert(url.hostname === 'google.com');
+  t.equal(
+    parse('http://google.com:80/foo/bar').port,
+    80,
+    '`port`: explicit (1)'
+  );
 
-        ur2 = parseLink('/one/two/four');
+  t.equal(
+    parse('http://google.com:3000/foo/bar').port,
+    3000,
+    '`port`: explicit (2)'
+  );
 
-        assert(ur2.hostname === '');
-    });
+  t.equal(
+    parse('google.com/foo/bar').port,
+    80,
+    '`port`: missing'
+  );
 
-    it('should have a `host` property', function () {
-        var url,
-            ur2;
+  t.equal(
+    parse('http://google.com:3000/foo/bar?name=tobi').search,
+    '?name=tobi',
+    '`search`'
+  );
 
-        url = parseLink('http://google.com:3000/foo/bar');
+  t.equal(
+    parse('http://google.com:3000/foo/bar').search,
+    '',
+    '`search`: missing'
+  );
 
-        assert(url.host === 'google.com:3000');
+  t.equal(
+    parse('http://google.com:3000/foo/bar?name=tobi').query,
+    'name=tobi',
+    '`query`'
+  );
 
-        ur2 = parseLink('google.com/foo/bar');
+  t.equal(
+    parse('http://google.com:3000/foo/bar').query,
+    '',
+    '`query`: missing'
+  );
 
-        assert(ur2.host === '');
-    });
+  t.equal(
+    parse('http://google.com:3000/foo/bar#something').hash,
+    '#something',
+    '`hash`'
+  );
 
-    it('should have a `port` property', function () {
-        var url,
-            ur2,
-            ur3,
-            ur4,
-            ur5;
+  t.equal(
+    parse('http://google.com:3000/foo/bar').hash,
+    '',
+    '`hash`: missing'
+  );
 
-        url = parseLink('http://google.com/foo/bar');
-        ur2 = parseLink('https://google.com/foo/bar');
-        ur3 = parseLink('http://google.com:80/foo/bar');
-        ur4 = parseLink('http://google.com:3000/foo/bar');
-        ur5 = parseLink('google.com/foo/bar');
+  t.equal(
+    parse('http://google.com:3000/foo/bar').hash,
+    '',
+    '`hash`: missing'
+  );
 
-        assert(url.port === 80);
-        assert(ur2.port === 443);
-        assert(ur3.port === 80);
-        assert(ur4.port === 3000);
-        assert(ur5.port === 80);
-    });
-
-    it('should have a `search` property', function () {
-        var url,
-            ur2;
-
-        url = parseLink('http://google.com:3000/foo/bar?name=tobi');
-
-        assert(url.search === '?name=tobi');
-
-        ur2 = parseLink('http://google.com:3000/foo/bar');
-
-        assert(ur2.search === '');
-    });
-
-    it('should have a `query` property', function () {
-        var url,
-            ur2;
-
-        url = parseLink('http://google.com:3000/foo/bar?name=tobi');
-
-        assert(url.query === 'name=tobi');
-
-        ur2 = parseLink('http://google.com:3000/foo/bar');
-
-        assert(ur2.query === '');
-    });
-
-    it('should have a `hash` property', function () {
-        var url,
-            ur2;
-
-        url = parseLink('http://google.com:3000/foo/bar#something');
-
-        assert(url.hash === '#something');
-
-        ur2 = parseLink('http://google.com:3000/foo/bar');
-
-        assert(ur2.hash === '');
-    });
+  t.end();
 });
 
-/*
- * Node.js specific `location`-like relative.
- */
+test('parse(url, relative)', function (t) {
+  t.equal(
+    parse('/one/two/three', 'four').pathname,
+    '/one/two/four',
+    'should work with relative paths'
+  );
 
-/* istanbul ignore else */
-if (parseLink.length === 2) {
-    describe('parse-link(url, relative)', function () {
-        it('should work with relative paths', function () {
-            assert(
-                parseLink('/one/two/three', 'four').pathname ===
-                '/one/two/four'
-            );
-        });
+  t.equal(
+    parse('http://example.com/', '/one').href,
+    'http://example.com/one',
+    'should work with relative paths'
+  );
 
-        it('should work with absolute paths', function () {
-            assert(
-                parseLink('http://example.com/', '/one').href ===
-                'http://example.com/one'
-            );
-        });
-    });
-}
+  t.end();
+});
