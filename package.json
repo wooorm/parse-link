@@ -1,6 +1,6 @@
 {
   "name": "parse-link",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Unified URL parsing API in the browser and node",
   "license": "MIT",
   "keywords": [
