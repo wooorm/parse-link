@@ -15,7 +15,7 @@ npm install parse-link
 ```js
 var parse = require('parse-link');
 
-parse('http://user:pass@host.com:8080/path?query=string#hash');
+console.log(parse('http://user:pass@host.com:8080/path?query=string#hash'));
 ```
 
 Yields:
@@ -47,15 +47,15 @@ URL module in Node.
 
 `Object`:
 
-*   `href` (string) — given (cleaned) url;
-*   `pathname` (string) — path;
-*   `protocol` (string) — `http:`, `https:`, `mailto:`, etc;
-*   `hostname` (string) — complete domain, including subdomains and `www.`;
-*   `host` (string) — `hostname` with port;
-*   `port` (number) — TCP port;
-*   `search` (string) — `query` with question mark;
-*   `query` (string) — GET parameters;
-*   `hash` (string) — Hash with pound/octothorp/what-evs;
+*   `href` (string) — given (cleaned) url
+*   `pathname` (string) — path
+*   `protocol` (string) — `http:`, `https:`, `mailto:`, etc
+*   `hostname` (string) — complete domain, including subdomains and `www.`
+*   `host` (string) — `hostname` with port
+*   `port` (number) — TCP port
+*   `search` (string) — `query` with question mark
+*   `query` (string) — GET parameters
+*   `hash` (string) — Hash, including pound/octothorp/what-evs
 
 > Node supports a second parameter which the given `url`
 > is `relative` to: In the browser, URLs are parsed relative
