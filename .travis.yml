@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-- '4.0'
-- '8.0'
+- lts/boron
+- node
 after_script: bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: RLme55Y54NVnYWPTHOrIX5X0RR3CwOCRnoPrMXaZItWcSszJLjDdQkvwx/u+Nzn7G3G14A38osAzqzsa2cwrfVeXemdzttFTt5pZEko6mSAIjS9uvzte/ekiqho2RK+dCsw2LGttNbN6/8BShUpo1A+mrK0Y4U2nQCbQgnfwLiA=
   file:
@@ -13,4 +14,3 @@ deploy:
     - "parse-link.min.js"
   on:
     tags: true
-    node: '8.0'
