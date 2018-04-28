@@ -5,19 +5,12 @@ node_js:
 after_script: bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
-  - provider: npm
-    email: tituswormer@gmail.com
-    api_key:
-      secure: TVd9Y8NWfTodZVV4lYupm7Dyhd6B9FmCiNVFHGhlNqkClGZd5AyqUaa3ZawMZ9RWKf+/XVJLtc6wT34HeKKhNhDtdB9Hu2x2LXAAnO69+q1Kgmf5CK1kv4ZjqebtN7EK6mzfLUmJ1cEz8PgnnoaaJ89E0q/tlIOdmOiOjRmMe6o=
-    on:
-      tags: true
-      node: '8.0'
-  - provider: releases
-    api_key:
-      secure: RLme55Y54NVnYWPTHOrIX5X0RR3CwOCRnoPrMXaZItWcSszJLjDdQkvwx/u+Nzn7G3G14A38osAzqzsa2cwrfVeXemdzttFTt5pZEko6mSAIjS9uvzte/ekiqho2RK+dCsw2LGttNbN6/8BShUpo1A+mrK0Y4U2nQCbQgnfwLiA=
-    file:
-      - "parse-link.js"
-      - "parse-link.min.js"
-    on:
-      tags: true
-      node: '8.0'
+  provider: releases
+  api_key:
+    secure: RLme55Y54NVnYWPTHOrIX5X0RR3CwOCRnoPrMXaZItWcSszJLjDdQkvwx/u+Nzn7G3G14A38osAzqzsa2cwrfVeXemdzttFTt5pZEko6mSAIjS9uvzte/ekiqho2RK+dCsw2LGttNbN6/8BShUpo1A+mrK0Y4U2nQCbQgnfwLiA=
+  file:
+    - "parse-link.js"
+    - "parse-link.min.js"
+  on:
+    tags: true
+    node: '8.0'
