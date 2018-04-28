@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var parse = require('./');
+var parse = require('.');
 
 test('parse(url)', function (t) {
   t.equal(
