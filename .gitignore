@@ -5,3 +5,4 @@ coverage/
 node_modules/
 parse-link.js
 parse-link.min.js
+yarn.lock
