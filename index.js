@@ -1,58 +1,58 @@
-'use strict';
+'use strict'
 
-var url = require('url');
+var url = require('url')
 
-module.exports = parse;
+module.exports = parse
 
-var port = 80;
+var port = 80
 
 function parse(link, relative) {
   if (relative) {
-    link = url.resolve(link, relative);
+    link = url.resolve(link, relative)
   }
 
-  link = url.parse(link);
+  link = url.parse(link)
 
-  link.port = Number(link.port) || inferPort(link.protocol) || port;
+  link.port = Number(link.port) || inferPort(link.protocol) || port
 
   if (link.hash === null) {
-    link.hash = '';
+    link.hash = ''
   }
 
   if (link.query === null) {
-    link.query = '';
+    link.query = ''
   }
 
   if (link.search === null) {
-    link.search = '';
+    link.search = ''
   }
 
   if (link.host === null) {
-    link.host = '';
+    link.host = ''
   }
 
   if (link.hostname === null) {
-    link.hostname = '';
+    link.hostname = ''
   }
 
   if (link.protocol === null) {
-    link.protocol = '';
+    link.protocol = ''
   }
 
   if (link.pathname === null) {
-    link.pathname = '';
+    link.pathname = ''
   }
 
-  return link;
+  return link
 }
 
 /* Infer port from a protocol. */
 function inferPort(protocol) {
   if (protocol === 'http:') {
-    return 80;
+    return 80
   }
 
   if (protocol === 'https:') {
-    return 443;
+    return 443
   }
 }

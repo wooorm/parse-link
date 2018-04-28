@@ -13,9 +13,9 @@ npm install parse-link
 ## Usage
 
 ```js
-var parse = require('parse-link');
+var parse = require('parse-link')
 
-console.log(parse('http://user:pass@host.com:8080/path?query=string#hash'));
+console.log(parse('http://user:pass@host.com:8080/path?query=string#hash'))
 ```
 
 Yields:
