@@ -46,7 +46,7 @@ function parse(link, relative) {
   return link
 }
 
-/* Infer port from a protocol. */
+// Infer port from a protocol.
 function inferPort(protocol) {
   if (protocol === 'http:') {
     return 80
