@@ -1,4 +1,9 @@
-# parse-link [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
+# parse-link
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 
 Unified URL parsing API in the browser and Node.
 
@@ -74,13 +79,21 @@ alike.
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/parse-link.svg
+[build-badge]: https://img.shields.io/travis/wooorm/parse-link.svg
 
-[travis]: https://travis-ci.org/wooorm/parse-link
+[build]: https://travis-ci.org/wooorm/parse-link
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/parse-link.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/parse-link.svg
 
-[codecov]: https://codecov.io/github/wooorm/parse-link
+[coverage]: https://codecov.io/github/wooorm/parse-link
+
+[downloads-badge]: https://img.shields.io/npm/dm/parse-link.svg
+
+[downloads]: https://www.npmjs.com/package/parse-link
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/parse-link.svg
+
+[size]: https://bundlephobia.com/result?p=parse-link
 
 [npm]: https://docs.npmjs.com/cli/install
 
